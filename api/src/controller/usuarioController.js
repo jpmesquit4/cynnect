@@ -31,8 +31,10 @@ server.post('/usuario/cadastro', async (req, resp) => {
       throw new Error('Nome do usuario é obrigatório!')
 
       if(!novoUsuario.email)
-      throw new Error('Email é obrigatório!')
-
+        throw new Error('Email é obrigatório!')
+      else if(novoUsuario.email.includes("@gmail.com") == false && novoUsuario.email.includes("@outlook.com") == false)
+        throw new Error('Email inválido!')
+    
       if(!novoUsuario.senha)
       throw new Error('Senha é obrigatória!')
       else if (format.test(novoUsuario.senha) == false)
