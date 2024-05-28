@@ -41,6 +41,10 @@ server.post('/usuario/cadastro', async (req, resp) => {
       if(!novoUsuario.cpf)
       throw new Error('CPF é obrigatório!')
 
+      else if (novoUsuario.cpf.length != 14)
+        throw new Error('CPF incompleto!')
+        
+
       const resposta = await inserirCliente(novoUsuario);
 
       resp.send(resposta);
